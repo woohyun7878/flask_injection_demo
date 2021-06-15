@@ -1,2 +1,3 @@
 # python_flask_demo
-This repository is NOT an original project. I developed this demo from an online course to brush up on Flask before implementing a testApp for the application security company Fasoo.
+This repository is built on a simple Flask blog skeleton and was created for pre-development research at Fasoo. 
+I intentionally added a page that can be attacked with SQL injection.

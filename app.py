@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from sqlalchemy.sql import text
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
@@ -36,6 +37,19 @@ def posts():
         return redirect('/posts')
     else:
         all_posts = BlogPost.query.order_by(BlogPost.date_posted).all()
+        return render_template('posts.html', posts=all_posts)
+
+@app.route('/insecureposts/<string:name>', methods=['GET', 'POST'])
+def insecureposts(name):
+    if request.method == 'POST':
+        post_title = request.form['title']
+        post_content = request.form['content']
+        new_post = BlogPost(title=post_title, content=post_content, author='Michael')
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect('/insecureposts/Michael')
+    else:
+        all_posts = BlogPost.query.filter(text("author={}".format("\'"+name+"\'"))).all()
         return render_template('posts.html', posts=all_posts)
 
 @app.route('/home/users/<string:name>/posts/<int:id>')

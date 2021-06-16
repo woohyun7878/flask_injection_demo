@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
 
-{% block head %} 
-<title>home</title>
+{% block head %}
+<title>Home</title>
 {% endblock %}
 
-{% block body %} 
+{% block body %}
+<br>
 <h1>Home Page</h1>
+<br>
+<main role="main">
+    <div class="jumbotron">
+        <div class="col-sm-8 mx-auto">
+            <h1>Welcome!</h1>
+            <p>This basic blog site was created for pre-development research at Fasoo, mostly
+                following the Python Flask tutorial by <a href="https://cleverprogrammer.com">Clever Programmer</a>.
+                <p>Go visit <a href="https://en.fasoo.com">Fasoo</a>, Korea's leading data security firm.</p>
+                <p>
+                    <a class="btn btn-primary" href="/posts" role="button">View Posts
+                        &raquo;</a>
+                </p>
+        </div>
+    </div>
+</main>
 {% endblock %}

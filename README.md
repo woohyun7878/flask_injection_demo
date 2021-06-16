@@ -1,3 +1,9 @@
-# flask_injection_demo
-This repository is built on a simple Flask blog skeleton and was created for pre-development research at Fasoo. 
-I intentionally added a page that can be attacked with SQL injection.
+# flask_demo
+
+This basic blog site was created for Flask pre-development research at Fasoo.
+
+## Skill Stacks
+
+`Frontend`  : `HTML5` and `CSS3` with `Jinja` template engine
+
+`Backend`   : `Flask` and `SQLite`

@@ -1,6 +1,8 @@
-# flask_demo
+# flask_injection_demo
 
-This basic blog site was created for Flask pre-development research at Fasoo.
+This repository was created for pre-development research @ Fasoo.  
+I made this website intentionally vulnerable to SQL injection to see 
+whether our SAST engine could detect the vulnerability in a Flask environment
 
 ## Skill Stacks
 

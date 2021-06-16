@@ -7,7 +7,7 @@
 {% block body %}
 <br>
 <div>
-	<h1 style="display:inline">Posts</h1>
+	<h1 style="display:inline">Sensitive Information Cloud</h1>
 	<a style="display:inline" class="btn btn-success float-right" href="/posts/new">New Post</a>
 </div>
 	<hr> 
@@ -18,10 +18,10 @@
 	{% for post in posts %}
 		<h2>{{ post.title }}</h2>
 
-		{% if post.author %}
-			<small> Written by {{ post.author }} on {{ post.date_posted }} </small>
+		{% if post.auth_TAN %}
+			<small> Authentication TAN: {{ post.auth_TAN }} </small>
 		{% else %}
-			<small> Written by Anopnymous on {{ post.date_posted }} </small>
+			<small> Authentication TAN: {{ NULL }} </small>
 		{% endif %}
 
 		<br>

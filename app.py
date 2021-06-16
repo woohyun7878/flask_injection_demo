@@ -12,7 +12,7 @@ class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    author = db.Column(db.String(20), nullable=False, default='N/A')
+    auth_TAN = db.Column(db.String(20), nullable=False, default='N/A')
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     
     def __repr__(self):
@@ -22,7 +22,7 @@ all_posts = [
 	{
 		'title': 'Post 1',
 		'content': 'This is the content of post 1.',
-		'author': 'Aaron'
+		'auth_TAN': 'Aaron'
  	},
  	{
 		'title': 'Post 2',
@@ -37,8 +37,8 @@ def index():
 @app.route('/posts', methods=['GET', 'POST'])
 def posts():
         if request.method == 'POST':
-            post_filter_by = request.form['filter_by']
-            all_posts = BlogPost.query.filter(text("author={}".format("\'"+ post_filter_by +"\'"))).all()
+            post_filter_by = request.form['auth_TAN']
+            all_posts = BlogPost.query.filter(text("auth_TAN={}".format("\'"+ post_filter_by +"\'"))).all()
             return render_template('posts.html', posts=all_posts)
         else:
             all_posts = BlogPost.query.order_by(BlogPost.date_posted).all()
@@ -56,7 +56,7 @@ def edit(id):
     post = BlogPost.query.get_or_404(id)
     if request.method == 'POST':
         post.title = request.form['title']
-        post.author = request.form['author']
+        post.auth_TAN = request.form['auth_TAN']
         post.content = request.form['content']
         db.session.commit()
         return redirect('/posts')
@@ -68,8 +68,8 @@ def new_post():
     if request.method =='POST':
         post_title = request.form['title']
         post_content = request.form['content']
-        post_author = request.form['author']
-        new_post = BlogPost(title=post_title, content=post_content, author=post_author)
+        post_auth_TAN = request.form['auth_TAN']
+        new_post = BlogPost(title=post_title, content=post_content, auth_TAN=post_auth_TAN)
         db.session.add(new_post)
         db.session.commit()
         return redirect('/posts')
